@@ -14,6 +14,10 @@ class Picture < ActiveRecord::Base
     "/system/pictures/#{self.id}/#{self.id}_#{type}.png"
   end
 
+  def url(type)
+    "http://#{DOMAIN}#{uri}"
+  end
+
   protected
   def download_image
     `wget #{self.source_url} -O /tmp/picture_#{self.id}`

@@ -4,8 +4,8 @@
     <% @pictures.each do |picture| %>
       {
         "imageId" : "<%= picture.id %>",
-        "imagePreview" : "<%= picture.uri(:thumb) %>",
-        "imageFullSize" : "<%= picture.uri(:full) %>"
+        "imagePreview" : "<%= picture.url(:thumb) %>",
+        "imageFullSize" : "<%= picture.url(:full) %>"
       }
       <% if picture != @pictures.last %>,<% end %>
     <% end %>
