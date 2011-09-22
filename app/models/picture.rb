@@ -15,7 +15,7 @@ class Picture < ActiveRecord::Base
   end
 
   def url(type)
-    "http://#{DOMAIN}#{uri}"
+    "http://#{DOMAIN}#{uri(type)}"
   end
 
   protected
