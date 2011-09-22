@@ -54,12 +54,13 @@ namespace :deploy do
   desc "Symlink shared resources on each release - not used"
   task :symlink_shared, :roles => :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/config/login.rb #{release_path}/config/login.rb"
     run "ln -nfs #{shared_path}/system/ #{release_path}/public/system"
   end
 
   task :assets, :roles => :app do
-    run "rake assets:clean"
-    run "rake assets:precompile"
+    run "cd #{release_path} && bundle exec rake assets:clean"
+    run "cd #{release_path} && bundle exec rake assets:precompile"
   end
 end
 
