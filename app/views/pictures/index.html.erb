@@ -1,0 +1,10 @@
+<h1>Listing pictures</h1>
+
+<% @pictures.each do |picture| %>
+  <div class="picture">
+    <a href="<%= edit_picture_path(picture) %>"><img src="<%= picture.uri(:thumb) %>" /></a><br/>
+    <%= link_to 'Destroy', picture, :confirm => 'Are you sure?', :method => :delete %>
+  </div>
+<% end %>
+<div style="clear: left"></div>
+<%= link_to 'New Picture', new_picture_path %>

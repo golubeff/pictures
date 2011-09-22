@@ -1,0 +1,7 @@
+.bundle
+config/database.yml
+public/system
+db/*.sqlite3
+log/*.log
+tmp/
+.sass-cache/

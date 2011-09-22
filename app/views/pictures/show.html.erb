@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<img src="<%= @picture.uri(:thumb) %>" />
+
+<p>
+  <b>Source url:</b>
+  <%= @picture.source_url %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Back', pictures_path %>

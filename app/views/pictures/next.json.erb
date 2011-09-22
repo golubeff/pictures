@@ -1,0 +1,13 @@
+{
+  "firstId" : "<%= @pictures.first.id %>",
+  "images" : [
+    <% @pictures.each do |picture| %>
+      {
+        "imageId" : "<%= picture.id %>",
+        "imagePreview" : "<%= picture.uri(:thumb) %>",
+        "imageFullSize" : "<%= picture.uri(:full) %>"
+      }
+      <% if picture != @pictures.last %>,<% end %>
+    <% end %>
+  ]
+}
