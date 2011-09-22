@@ -58,15 +58,15 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/system/ #{release_path}/public/system"
   end
 
-  task :assets, :roles => :app do
-    run "cd #{release_path} && bundle exec rake assets:clean"
-    run "cd #{release_path} && bundle exec rake assets:precompile"
-  end
+  #task :assets, :roles => :app do
+    #run "cd #{release_path} && bundle exec rake assets:clean"
+    #run "cd #{release_path} && bundle exec rake assets:precompile"
+  #end
 end
 
 after 'deploy:update_code', 'deploy:symlink_shared'
 after "deploy:symlink", "deploy:migrate"
-after "deploy:symlink", "deploy:assets"
+#after "deploy:symlink", "deploy:assets"
 deploy.task :restart, :roles => :app do
   #run "cd #{current_path} && rake queue:restart_workers RAILS_ENV=production"
   #run "sudo /etc/init.d/god restart"

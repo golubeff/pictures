@@ -2,7 +2,6 @@
 config/database.yml
 public/system
 config/login.rb
-public/assets
 db/*.sqlite3
 log/*.log
 tmp/
