@@ -2,7 +2,7 @@ class PicturesController < InheritedResources::Base
   http_basic_authenticate_with :name => USERNAME, :password => PASSWORD, :except => :next
   before_filter :load_pictures, :only => :next
   before_filter :error_404, :only => :next
-  caches_page :next
+  #caches_page :next
 
   def next
   end
