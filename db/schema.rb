@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111019013130) do
+ActiveRecord::Schema.define(:version => 20111019023608) do
+
+  create_table "import_logs", :force => true do |t|
+    t.string   "key"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "import_logs", ["key"], :name => "index_import_logs_on_key"
 
   create_table "pictures", :force => true do |t|
     t.string   "source_url"

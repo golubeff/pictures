@@ -4,6 +4,8 @@ gem 'rails', '3.1.0'
 gem 'pg'
 gem 'inherited_resources'
 gem 'will_paginate', '~> 3.0.2'
+gem 'mechanize'
+gem 'whenever', :require => false
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
