@@ -2,8 +2,8 @@ set :keep_releases, 2
 
 # bundler bootstrap
 require 'bundler/capistrano'
-#require 'whenever/capistrano'
-#set :whenever_command, "bundle exec whenever"
+require 'whenever/capistrano'
+set :whenever_command, "bundle exec whenever"
 
 # main details
 set :application, "pics.alfaproductionllc.com"
