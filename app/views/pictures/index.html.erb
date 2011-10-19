@@ -1,5 +1,6 @@
 <h1>Listing pictures</h1>
 
+<%= will_paginate @pictures %>
 <% @pictures.each do |picture| %>
   <div class="picture">
     <a href="<%= edit_picture_path(picture) %>"><img src="<%= picture.uri(:thumb) %>" /></a><br/>
@@ -7,4 +8,5 @@
   </div>
 <% end %>
 <div style="clear: left"></div>
+<%= will_paginate @pictures %>
 <%= link_to 'New Picture', new_picture_path %>

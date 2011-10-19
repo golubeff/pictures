@@ -13,11 +13,15 @@ class PicturesController < InheritedResources::Base
   end
 
   def load_pictures
-    @pictures = Picture.find(:all, 
+    @pictures = Picture.find(:all,
                  :conditions => [ "id > ?", params[:id] ], 
-                 :order => "id",
-                 :limit => 25
+                 :order => "id"
                 )
 
+  end
+
+  def collection
+    @pictures = Picture.paginate(:page => params[:page], :per_page => 10,
+                                :order => "id desc")
   end
 end
