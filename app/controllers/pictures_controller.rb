@@ -13,12 +13,9 @@ class PicturesController < InheritedResources::Base
   end
 
   def load_pictures
-    conditions = ""
-    if params[:smallest_id] && params[:highest_id]
-      conditions = [ "id > ? or id < ?", params[:highest_id], params[:smallest_id] ]
-    end
+      
     @pictures = Picture.find(:all,
-                 :conditions => conditions,
+                 :conditions => [ "id > ? or id < ?", params[:highest_id], params[:smallest_id] ],
                  :order => "id desc", 
                  :limit => 25
                 )
