@@ -1,6 +1,6 @@
 Pictures::Application.routes.draw do
   resources :pictures
-  match "pictures/next/:id.:format" => "pictures#next"
+  match "pictures/next/:smallest_id/:highest_id.:format" => "pictures#next"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

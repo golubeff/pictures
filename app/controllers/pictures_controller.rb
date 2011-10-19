@@ -14,8 +14,8 @@ class PicturesController < InheritedResources::Base
 
   def load_pictures
     @pictures = Picture.find(:all,
-                 :conditions => [ "id > ?", params[:id] ], 
-                 :order => "id", 
+                 :conditions => [ "id > ? and id < ?", params[:highest_id], params[:smallest_id] ], 
+                 :order => "id desc", 
                  :limit => 25
                 )
 
