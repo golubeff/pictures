@@ -1,4 +1,5 @@
 Pictures::Application.routes.draw do
+  match "pictures/next.:format" => "pictures#next"
   resources :pictures
   match "pictures/next/:smallest_id/:highest_id.:format" => "pictures#next"
 
