@@ -6,7 +6,7 @@
         "imageId" : "<%= picture.id %>",
         "imagePreview" : "<%= picture.url(:thumb) %>",
         "imageFullSize" : "<%= picture.url(:full) %>",
-        "source" : "<%= picture.source_url %>" 
+        "source" : "<%= picture.referral_url %>" 
       }
       <% if picture != @pictures.last %>,<% end %>
     <% end %>

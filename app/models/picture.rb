@@ -1,6 +1,7 @@
 class Picture < ActiveRecord::Base
   after_save :download_image
   after_destroy :unlink_image
+  validates_presence_of :source_url
 
   def directory
     path(:thumb).gsub(/\/[^\/]+$/, '')
@@ -10,8 +11,12 @@ class Picture < ActiveRecord::Base
     "#{Rails.root}/public#{self.uri(type)}"
   end
 
+  def referral_url
+    self.read_attribute('referral_url') || self.source_url
+  end
+
   def uri(type)
-    "/system/pictures/#{self.id}/#{self.id}_#{type}.png"
+    "/system/pictures/#{self.id}/#{self.id}_#{type}.jpg"
   end
 
   def url(type)
@@ -22,8 +27,8 @@ class Picture < ActiveRecord::Base
   def download_image
     `wget #{self.source_url} -O /tmp/picture_#{self.id}`
     FileUtils.mkpath(directory)
-    `convert /tmp/picture_#{self.id} -resize 128x128 #{path(:thumb)}`
-    `convert /tmp/picture_#{self.id} -resize 512x512 #{path(:full)}`
+    `convert /tmp/picture_#{self.id} -resize 128x128 -quality 61 #{path(:thumb)}`
+    `convert /tmp/picture_#{self.id} -resize 512x512 -quality 61 #{path(:full)}`
   end
 
   def unlink_image
