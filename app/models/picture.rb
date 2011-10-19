@@ -27,8 +27,8 @@ class Picture < ActiveRecord::Base
   def download_image
     `wget #{self.source_url} -O /tmp/picture_#{self.id}`
     FileUtils.mkpath(directory)
-    `convert /tmp/picture_#{self.id} -resize 128 -quality 61 #{path(:thumb)}`
-    `convert /tmp/picture_#{self.id} -resize 512 -quality 61 #{path(:full)}`
+    `convert /tmp/picture_#{self.id} -resize 80x80 -quality 61 #{path(:thumb)}`
+    `convert /tmp/picture_#{self.id} -resize 768 -quality 61 #{path(:full)}`
   end
 
   def unlink_image
