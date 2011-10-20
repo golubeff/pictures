@@ -31,6 +31,7 @@ class Picture < ActiveRecord::Base
       FileUtils.mkpath(directory)
       `convert /tmp/picture_#{self.id} -resize 80x80 -quality 61 #{path(:thumb)}`
       `convert /tmp/picture_#{self.id} -resize 768 -quality 61 #{path(:full)}`
+      return false unless File.exists?(path(:thumb)) && File.exists?(path(:full))
     end
     true
   end
