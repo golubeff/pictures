@@ -37,7 +37,7 @@ class Picture < ActiveRecord::Base
   end
 
   def calculate_sizes
-    calculate_sizes! if self.source_url && 
+    calculate_sizes! if self.source_url && File.exists?(path(:full))
       !(self.thumb_width && self.thumb_height && self.full_width && self.full_height)
     true
   end
