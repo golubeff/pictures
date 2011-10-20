@@ -5,8 +5,8 @@ class AddSizesToPictures < ActiveRecord::Migration
     add_column :pictures, :full_width, :integer
     add_column :pictures, :full_height, :integer
 
-    Picture.all.each do |picture|
-      picture.send(:calculate_sizes!)
-    end
+    #Picture.all.each do |picture|
+      #picture.send(:calculate_sizes!)
+    #end
   end
 end
