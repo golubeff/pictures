@@ -26,7 +26,7 @@ class Picture < ActiveRecord::Base
 
   protected
   def download_image
-    if self.changes.keys.include?(:source_url)
+    if self.changes.keys.include?(:source_url) || !File.exists?(path(:thumb)) || !File.exists?(path(:full))
       `wget #{self.source_url} -O /tmp/picture_#{self.id}`
       FileUtils.mkpath(directory)
       `convert /tmp/picture_#{self.id} -resize 80x80 -quality 61 #{path(:thumb)}`
