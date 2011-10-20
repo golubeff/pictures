@@ -1,6 +1,5 @@
 class Picture < ActiveRecord::Base
   after_save :download_image
-  after_save :calculate_sizes
   after_destroy :unlink_image
   validates_presence_of :source_url
 
@@ -32,17 +31,12 @@ class Picture < ActiveRecord::Base
       `convert /tmp/picture_#{self.id} -resize 80x80 -quality 61 #{path(:thumb)}`
       `convert /tmp/picture_#{self.id} -resize 768 -quality 61 #{path(:full)}`
       return false unless File.exists?(path(:thumb)) && File.exists?(path(:full))
+      calculate_sizes
     end
     true
   end
 
   def calculate_sizes
-    calculate_sizes! if self.source_url && File.exists?(path(:full))
-      !(self.thumb_width && self.thumb_height && self.full_width && self.full_height)
-    true
-  end
-
-  def calculate_sizes!
     self.thumb_width, self.thumb_height = `identify #{path(:thumb)}`.split(/ /)[2].split('x')
     self.full_width, self.full_height = `identify #{path(:full)}`.split(/ /)[2].split('x')
     self.save!
