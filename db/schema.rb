@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111019023608) do
+ActiveRecord::Schema.define(:version => 20111020061626) do
 
   create_table "import_logs", :force => true do |t|
     t.string   "key"
@@ -26,6 +26,10 @@ ActiveRecord::Schema.define(:version => 20111019023608) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "referral_url"
+    t.integer  "thumb_width"
+    t.integer  "thumb_height"
+    t.integer  "full_width"
+    t.integer  "full_height"
   end
 
 end

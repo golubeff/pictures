@@ -6,6 +6,10 @@
       {
         "imageId" : "<%= picture.id %>",
         "imagePreview" : "<%= picture.url(:thumb) %>",
+        "imagePreviewWidth" : "<%= picture.thumb_width %>",
+        "imagePreviewHeight" : "<%= picture.thumb_height %>",
+        "imageFullSizeWidth" : "<%= picture.full_width %>",
+        "imageFullSizeHeight" : "<%= picture.full_height %>",
         "imageFullSize" : "<%= picture.url(:full) %>",
         "source" : "<%= picture.referral_url %>" 
       }
