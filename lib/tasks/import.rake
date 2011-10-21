@@ -5,8 +5,15 @@ namespace :import do
     host = "http://www.lolpix.com"
     page = agent.get("#{host}/pictures.asp")
 
+    latest_id = nil
     page.search('.gallery li a').reverse.each do |link|
       uri = link.attribute('href')
+      id = uri.to_s.scan(/(\d+)\.htm/).flatten[0]
+      if id.nil?
+        id = latest_id.to_i + 1
+        uri = "/_pics/Funny_Pictures_#{id}.htm"
+      end
+      latest_id = id
 
       referral_url = "#{host}#{uri}"
       date_page = agent.get(referral_url)
